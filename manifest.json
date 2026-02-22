@@ -1,0 +1,11 @@
+{
+  "domain": "mennekes_modbus",
+  "name": "Mennekes Amtron",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/yourusername/mennekes_modbus",
+  "iot_class": "local_polling",
+  "requirements": ["pymodbus>=3.0.0"],
+  "version": "1.0.0"
+}

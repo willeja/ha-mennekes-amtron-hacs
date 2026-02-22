@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mennekes Amtron instellen",
+        "description": "Verbind Home Assistant met je Mennekes Amtron laadpaal via Modbus TCP.\n\nZorg dat **HEMS Modbus TCP** ingeschakeld is op de laadpaal (Instellingen → Netwerk → Extern energiemanagement → Lezen en schrijven).",
+        "data": {
+          "host": "IP-adres laadpaal",
+          "port": "Modbus TCP poort",
+          "slave_id": "Slave ID",
+          "scan_interval": "Scan interval (seconden)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken. Controleer het IP-adres en of de laadpaal bereikbaar is.",
+      "invalid_slave_id": "Ongeldige Slave ID.",
+      "unknown": "Onverwachte fout opgetreden."
+    },
+    "abort": {
+      "already_configured": "Deze laadpaal is al geconfigureerd."
+    }
+  }
+}
