@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mennekes Amtron configureren",
+        "description": "Voer de verbindingsgegevens van je Mennekes Amtron laadpaal in.",
+        "data": {
+          "host": "IP-adres",
+          "port": "Modbus TCP poort",
+          "slave_id": "Slave ID",
+          "scan_interval": "Scan interval (seconden)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met de laadpaal. Controleer het IP-adres en poort.",
+      "invalid_slave_id": "Ongeldige Slave ID. Controleer de Modbus configuratie van je laadpaal.",
+      "unknown": "Onverwachte fout opgetreden"
+    },
+    "abort": {
+      "already_configured": "Deze laadpaal is al geconfigureerd"
+    }
+  }
+}

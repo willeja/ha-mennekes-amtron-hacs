@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://10.0.3.128/datapointlist.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+body {
+font-family: Arial, sans-serif; 
+font-size: 12px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+ background-color: #f2f2f2;
+}
+h2 {text-align: center;}
+.minimal-width {width: auto}
+</style>
+
+
+<title>Modbus TCP Register</title>
+<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.7"></head>
+<body>
+
+<h2>AMTRON 4Business 710 22 C2 - Modbus TCP Server - Data Points</h2>
+
+<br><table class="minimal-width">
+<tbody><tr>
+<td>Protocol Version</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Modbus TCP Server on Port</td>
+<td>502</td>
+</tr>
+<tr>
+<td>Unit Id</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Register Type</td>
+<td>All Holding-Registers</td>
+</tr>
+</tbody></table>
+<br><table style="width:100%">
+<tbody><tr>
+<th>Start Address</th>
+<th>Reg. Count</th>
+<th>Function Codes</th>
+<th>Name</th>
+<th>Unit</th>
+<th>Description</th>
+<th>Available with Protocol Version</th>
+</tr><tr><td>100</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Firmware Version</td>
+<td>4 * ASCII Character - Example X.XX</td>
+<td>Returns the application version number. More details in registers 153-157.</td>
+<td>1.0</td>
+</tr>
+<tr><td>104</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>OCPP Status</td>
+<td>1 * uint16 - Undefined = 0, Available = 1, Preparing = 2, Charging = 3, SuspendedEVSE = 4, SuspendedEV = 5, Finishing = 6, Reserved = 7, Unavailable = 8, Faulted = 9</td>
+<td>Returns the charge point status based on the enumeration defined in the OCPP 1.6 specification.</td>
+<td>1.0</td>
+</tr>
+<tr><td>105</td>
+<td>8</td>
+<td>FC03 - Read</td>
+<td>Error Codes</td>
+<td>4 * uint32</td>
+<td>Aggregated error states. Bit coded in 4 uint32 data points.</td>
+<td>1.0</td>
+</tr>
+<tr><td>120</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Protocol Version</td>
+<td>4 * ASCII Character - Example X.XX</td>
+<td>Modbus protocol version number used by this AMTRON 4You/4Business.</td>
+<td>1.0</td>
+</tr>
+<tr><td>122</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Vehicle State</td>
+<td>1 * int16 - A = 1, B = 2, C = 3, D = 4, E = 5</td>
+<td>Reflects the vehicle state as signaled by the Control Pilot (CP). A = no EV connected, B = EV connected but not charging, C = EV charging, D = ventilation required, E = error.</td>
+<td>1.0</td>
+</tr>
+<tr><td>124</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Charge Point Availability</td>
+<td>1 * uint16 - 0 = Unavailable, 1 = Available</td>
+<td>Status of the charge point availability as also reported to a configured backend.</td>
+<td>1.0</td>
+</tr>
+<tr><td>131</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>Safe Current</td>
+<td>1 * uint16 - [A]</td>
+<td>Defines the charging current that will be applied for all phases if the communication with the modbus master (HEMS) is lost. The timeout duration is set in register 132. To pause the charging session when communication fails, set the register to 0 Ampere. Values below 6A are also set to 0A. Allowed values are therefore 0A and 6A to 32A.</td>
+<td>1.0</td>
+</tr>
+<tr><td>132</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>Communication Timeout</td>
+<td>1 * uint16 - [s]</td>
+<td>Time without a read or write process until the charging station (modbus client) will operate with the current as specified in register 131.</td>
+<td>1.0</td>
+</tr>
+<tr><td>134</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Operator Current Limit</td>
+<td>1 * uint16 - [A]</td>
+<td>Calculates the minimum current across all active internal and external load management modules. The result is the lowest value across all phases and is ready to be signaled to the EV.</td>
+<td>1.0</td>
+</tr>
+<tr><td>140</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Relay State</td>
+<td>1 * uint16 - On = 1, Off = 0</td>
+<td>State of the charging relay. It is closed by the charging station. The state changes to "On", if all preconditions are valid.</td>
+<td>1.0</td>
+</tr>
+<tr><td>141</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Device Id</td>
+<td>2 * ASCII Character - AM</td>
+<td>Identifies the device and always returns the value "AM".</td>
+<td>1.0</td>
+</tr>
+<tr><td>142</td>
+<td>10</td>
+<td>FC03 - Read</td>
+<td>Charge Point Model</td>
+<td>20 * ASCII Character</td>
+<td>Identifies the model of the charge point as set by the manufacturer.</td>
+<td>1.0</td>
+</tr>
+<tr><td>152</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Plug Lock Status</td>
+<td>1 * uint16 - Undefined = 0, Open = 1, Closed = 2, Latch not used = 3, Not read = 4</td>
+<td>Status of the plug lock detection. Reports the latch position for charging stations without fixed cables.</td>
+<td>1.0</td>
+</tr>
+<tr><td>153</td>
+<td>5</td>
+<td>FC03 - Read</td>
+<td>Firmware Versions</td>
+<td>Registers: 1.Major uint16; 2.Minor uint16; 3.Patch uint16; 4+5.Build uint32</td>
+<td>Application Version as Major.Minor.Patch-Build</td>
+<td>1.0</td>
+</tr>
+<tr><td>158</td>
+<td>16</td>
+<td>FC03 - Read</td>
+<td>Device Name</td>
+<td>32 * ASCII Character</td>
+<td>Identifies the name of the charge point as set by the user. DEPRECATED, use registers 2158-2173 instead.</td>
+<td>1.0</td>
+</tr>
+<tr><td>200</td>
+<td>6</td>
+<td>FC03 - Read</td>
+<td>Meter Energy</td>
+<td>3 * int32 - L1 [Wh], L2 [Wh], L3 [Wh]</td>
+<td>Energy [Wh] from primary meter for each phase. Phase 1 = Meter Total; Phase 2+3 = 0 (Not Available)</td>
+<td>1.0</td>
+</tr>
+<tr><td>206</td>
+<td>6</td>
+<td>FC03 - Read</td>
+<td>Meter Power</td>
+<td>3 * int32 - L1 [W], L2 [W], L3 [W]</td>
+<td>Power [W] from primary meter for Phase 1, 2 ,3</td>
+<td>1.0</td>
+</tr>
+<tr><td>212</td>
+<td>6</td>
+<td>FC03 - Read</td>
+<td>Meter Current</td>
+<td>3 * int32 - L1 [mA], L2 [mA], L3 [mA]</td>
+<td>Current [mA] from primary meter for Phase 1, 2 ,3</td>
+<td>1.0</td>
+</tr>
+<tr><td>218</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Meter Total Energy</td>
+<td>1 * int32 - [Wh]</td>
+<td>Total Energy from primary meter</td>
+<td>1.0</td>
+</tr>
+<tr><td>220</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Meter Total Power</td>
+<td>1 * int32 - [W]</td>
+<td>Total Power from primary meter</td>
+<td>1.0</td>
+</tr>
+<tr><td>222</td>
+<td>6</td>
+<td>FC03 - Read</td>
+<td>Meter Voltage</td>
+<td>3 * int32 - L1 [V], L2 [V], L3 [V]</td>
+<td>Voltage from primary meter for Phase 1, 2 ,3</td>
+<td>1.0</td>
+</tr>
+<tr><td>600</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Mode</td>
+<td>1 * uint16 - 0 = Disabled, 1 = Charging Point Network Master, 4 = Charging Point Network Satellite</td>
+<td>Indicates the role of this device in a charging point network. 0 indicates that the device is not part of a charging point network. To control the current limit of a charging point network, use the Charging Point Network EMS Current Limit (see registers 613-615). Only the Charging Point Network Master reports the charging point network details via Modbus and can be controlled by an EMS.</td>
+<td>1.5</td>
+</tr>
+<tr><td>610</td>
+<td>3</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Current Limit</td>
+<td>3 * uint16 - [A]</td>
+<td>Current limit as configured for the charging point network. Valid for phase 1, 2 and 3.</td>
+<td>1.5</td>
+</tr>
+<tr><td>613</td>
+<td>3</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>Charging Point Network EMS Current Limit</td>
+<td>3 * uint16 - [A]</td>
+<td>Current limits as set by the EMS for the whole charging point network for phase 1, 2 and 3. The lowest value is applied for all three phases.</td>
+<td>1.5</td>
+</tr>
+<tr><td>620</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Source of Limitation</td>
+<td>1 * uint16 - 0 = Static value charging point network, 1 = Static value charging point network with external meter, 2 = Static value grid with external meter, 3 = Downgrade, 4 = Energy Meter Fallback, 5 = Static value charging point network with EEBus</td>
+<td>Source for the currently active limitation of the calculated current within the charging point network. The current for charging the EVs will be adjusted accordingly.</td>
+<td>1.5</td>
+</tr>
+<tr><td>621</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Connected Charging Stations</td>
+<td>1 * uint16</td>
+<td>The number of charging stations within this charging point network. This includes the master itself and all satellites (including unavailable).</td>
+<td>1.5</td>
+</tr>
+<tr><td>630</td>
+<td>3</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Overall Current Applied</td>
+<td>3 * uint16 - [A]</td>
+<td>Overall Current the Charging Point Network Master is currently applying to the charging point network for phase 1, 2, 3. It reflects the sum of the current distributed within the charging point network for all connected devices. For EVs without consumption the network will reserve 6A for these charging stations. This may lead to a higher value in registers 630-632 than configured in registers 610-612. In adddition, the currently phasewise consumed currents are listed in registers 2636-2638.</td>
+<td>1.5</td>
+</tr>
+<tr><td>633</td>
+<td>3</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Overall Current Available</td>
+<td>3 * uint16 - [A]</td>
+<td>Overall free available current for the Charging Point Network Master within the charging point network for phase 1, 2, 3. It reflects the sum of the unused current (difference between registers 630-632 and 610-612) which still can be distributed within the charging point network for all connected devices.</td>
+<td>1.5</td>
+</tr>
+<tr><td>706</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Signaled Current to EV</td>
+<td>1 * uint16 - [A]</td>
+<td>The maximum current that's being signaled to the EV for charging. If the signaled current is still zero even if an EV is connected, not all preconditions for charging are met (e.g. authorization, valid HEMS limit, external inputs).</td>
+<td>1.0</td>
+</tr>
+<tr><td>707</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Charging Start Time</td>
+<td>hhmmss - Big-Endian packed BCD with left zero padding</td>
+<td>Timestamp indicating the start of the previous or ongoing charging process.</td>
+<td>1.0</td>
+</tr>
+<tr><td>710</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Charging End Time</td>
+<td>hhmmss - Big-Endian packed BCD with left zero padding</td>
+<td>Timestamp indicating when the previous charging process was completed.</td>
+<td>1.0</td>
+</tr>
+<tr><td>712</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Min Charging Current Limit</td>
+<td>1 * uint16 - [A]</td>
+<td>Minimum current limit for charging.</td>
+<td>1.0</td>
+</tr>
+<tr><td>715</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Max Charging Current Limit</td>
+<td>1 * uint16 - [A]</td>
+<td>This is the maximum current with which the EV can charge. It may come from the cable's PR value in analog vehicles, or from the maximum reported by the vehicle via 15118, whichever is lower.</td>
+<td>1.0</td>
+</tr>
+<tr><td>716</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Charged Energy</td>
+<td>1 * uint32 - [Wh]</td>
+<td>Sum of charged energy for the current charging session. The amount of charged energy will stay at its maximum until the next session is started.</td>
+<td>1.0</td>
+</tr>
+<tr><td>718</td>
+<td>2</td>
+<td>FC03 - Read</td>
+<td>Charging Duration</td>
+<td>1 * uint32 - [s]</td>
+<td>Duration of the charging process in seconds.</td>
+<td>1.0</td>
+</tr>
+<tr><td>1000</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>HEMS Current Limit</td>
+<td>1 * uint16 - [A]</td>
+<td>Current limit as requested by a HEMS. It is applied for all phases. To pause the charging session, set the register to 0 Ampere. Values below 6A are also set to 0A. Allowed values are therefore 0A and 6A to 32A. [COPY of register 2000.]</td>
+<td>1.0</td>
+</tr>
+<tr><td>1001</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>HEMS Current Limit 1/10 A</td>
+<td>1 * uint16 - [0.1 A]</td>
+<td>Same as Register 1000, but in 0.1A steps. e.g. 60 = 6 Ampere. [DEPRECATED, use register 2001 instead.]</td>
+<td>1.0</td>
+</tr>
+<tr><td>1002</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>HEMS Power Limit</td>
+<td>1 * uint16 - [W]</td>
+<td>Power limit as requested by a HEMS. Values below the HEMS Power Limit (Minimum) in register 2012 will be interpreted as 0W. Values above the HEMS Power Limit (Maximum) in register 2013 will be set to this maximum. The following values for the HEMS Power Limit shall be used: 0W for pause charging, 1380W up to 3680/7360W for 1-phase charging and at least 4140W for 3-phase charging. Also consider the Phase Switch Mode as listed in register 2020. The calculated and signaled current in direction to the EV (see register 706) uses a voltage-dependent correction factor based on the internally measured voltage in register 222. [DEPRECATED, use register 2002 instead.]</td>
+<td>1.0</td>
+</tr>
+<tr><td>2000</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>HEMS Current Limit</td>
+<td>1 * uint16 - [A]</td>
+<td>Current limit as requested by a HEMS. It is applied for all phases. To pause the charging session, set the register to 0 Ampere. Values below 6A are also set to 0A. Allowed values are therefore 0A and 6A to 32A.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2001</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>HEMS Current Limit 1/10 A</td>
+<td>1 * uint16 - [0.1 A]</td>
+<td>Same as Register 2000, but in 0.1A steps. e.g. 60 = 6 Ampere.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2002</td>
+<td>1</td>
+<td>FC03 - Read<br>FC16 - Write<br>FC06 - Write</td>
+<td>HEMS Power Limit</td>
+<td>1 * uint16 - [W]</td>
+<td>Power limit as requested by a HEMS. Values below the HEMS Power Limit (Minimum) in register 2012 will be interpreted as 0W. Values above the HEMS Power Limit (Maximum) in register 2013 will be set to this maximum. The following values for the HEMS Power Limit shall be used: 0W for pause charging, 1380W up to 3680/7360W for 1-phase charging and at least 4140W for 3-phase charging. Also consider the Phase Switch Mode as listed in register 2020. The calculated and signaled current in direction to the EV (see register 706) uses a voltage-dependent correction factor based on the internally measured voltage in register 222.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2010</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Modbus TCP / HEMS Configuration</td>
+<td>1 * uint16 - 0 = Modbus TCP Server not active (HEMS not possible), 1 = Modbus TCP Server active in Read only Mode (HEMS Read Only), 2 = Modbus TCP Server active in Read and Write Mode (HEMS Read and Write)</td>
+<td>Configuration of the Modbus TCP Server for HEMS functionality.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2011</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>HEMS Communication Status</td>
+<td>1 * uint16 - 0 = No Communication Error, 1 = HEMS Communication Timeout (Safe Current Active)</td>
+<td>If the HEMS is configured as HEMS Read and Write, the communication is monitored. The configured Safe Current is triggered after a Communication Timeout is recognized (see registers 131, 132).</td>
+<td>1.5</td>
+</tr>
+<tr><td>2012</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>HEMS Power Limit (Minimum)</td>
+<td>1 * uint16 - [W]</td>
+<td>Minimum power value of the charging station depending on the connected phases and the configured phase switch mode. Lower values in register 1002/2002 will be set automatically to 0W.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2013</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>HEMS Power Limit (Maximum)</td>
+<td>1 * uint16 - [W]</td>
+<td>Maximum power value of the charging station depending on the connected phases, the maximum device current, the installation current and the phase switch mode. Higher values written in register 1002/2002 will be set automatically to the maximum.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2020</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Phase Switch Mode</td>
+<td>1 * uint16 - 0 = Use 1 phase only, 1 = Use 3 phases only, 2 = Use dynamic phase switch, 3 = Phase switch only if no EV is connected (phase(s) are used as they were at the start of the charging session)</td>
+<td>Configuration of the used phases during a charging session. When using dynamic phase switch, an appropriate hysteresis must be implemented in the HEMS both before and after the phase switch. In general a hysteresis is also important when pausing and restarting a charging session.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2021</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Phase Switch Pause</td>
+<td>1 * uint16 - [s]</td>
+<td>Additional time in seconds to delay the charging process after a phase switch was triggered. The EV may run into sleep mode so that the changed phases are accepted after the charging is continued.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2022</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Phase Switch Status</td>
+<td>1 * uint16 - 0 = Phase switch not running, 1 = Phase switch running</td>
+<td>Indicates whether the phase switch is currently in progress if dynamic phase switch is configured (see register 2020).</td>
+<td>1.5</td>
+</tr>
+<tr><td>2023</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Assigned Phases</td>
+<td>1 * uint16 - 0 = None, 1 = One phase, 2 = Three phases</td>
+<td>In combination with the Relay State, the number of actively available phases can be determined during an active charging session.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2030</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Authorization Status</td>
+<td>1 * uint16 - 0 = No authorization neccessary (Autostart), 1 = Authorized, 2 = Not authorized</td>
+<td>If authorization is configured, the authorization is mandatory to start a charging session.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2158</td>
+<td>16</td>
+<td>FC03 - Read</td>
+<td>Device Name</td>
+<td>32 * ASCII Character</td>
+<td>Identifies the name of the charge point as set by the user.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2622</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Satellites in Fallback</td>
+<td>1 * uint16</td>
+<td>The number of satellites which are unavailable due to an interrupted connection. The satellites in fallback will operate with the configured fallback current. Must be 0 if the charging point network is fully operational, with a valid connection to each satellite.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2623</td>
+<td>1</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Satellite Fallback Current</td>
+<td>1 * unit16 - [A]</td>
+<td>If a Charging Point Network Satellite is not reachable due to an interrupted connection, it operates with the configured fallback current. This value is also reserved for each unavailable satellite within the Charging Point Network Master to avoid uncontrolled consumption.</td>
+<td>1.5</td>
+</tr>
+<tr><td>2636</td>
+<td>3</td>
+<td>FC03 - Read</td>
+<td>Charging Point Network Overall Current Consumption</td>
+<td>3 * uint16 - [A]</td>
+<td>Overall Current shows the currently consumed current on phase 1, 2 and 3. It sums up the current of all connected devices in the charging point network. Each unavailable, but paired Charging Point Network Satellite will be calculated with a consumption of the configured Satellite Fallback Current (see registers 2622 and 2623).</td>
+<td>1.5</td>
+</tr>
+</tbody></table>
+
+<p>Firmware-Version: 1.5.21</p>
+<p>Release-Date: 12.12.2025</p>
+
+</body></html>
