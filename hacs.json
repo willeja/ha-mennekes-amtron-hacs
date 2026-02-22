@@ -1,5 +1,6 @@
 {
   "name": "Mennekes Amtron",
+  "hacs": "1.6.0",
   "render_readme": true,
   "domains": ["sensor", "switch", "number"],
   "iot_class": "Local Polling",
